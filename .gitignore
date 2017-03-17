@@ -1,2 +1,2 @@
 # To ignore the dataset which the spider crawled from bilibili
-*.db
+*.db*
