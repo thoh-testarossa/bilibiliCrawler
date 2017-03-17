@@ -142,10 +142,10 @@ if __name__ == "__main__":
     #GetInfo(326)
 
     #To download the data after avid_Q
-    avid_Q = 6758809
+    avid_Q = minid
     maxID = GetMaxID();
 
-    for avid in range(minid - 1000, GetMaxID()):
+    for avid in range(minid - 1, GetMaxID()):
     #for avid in range(, maxID):
         '''curs.execute(''SELECT avid FROM avlist where avid = {avid}''.format(avid=avid))
         rows = curs.fetchall()
