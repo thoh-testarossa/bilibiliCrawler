@@ -18,8 +18,8 @@ def WriteData(aid=None, cid=None, data=None):
         return None
     try:
         #danmaku_date, danmaku_time, danmaku_type, danmaku_font, danmaku_color, danmaku_crc, danmaku_string, danmaku_7
-        curs.execute('''CREATE TABLE IF NOT EXISTS danmakulist 
-            (Aid INT, Cid INT, DDate CHAR(20), DTime FLOAT, Type INT, Font INT, Color CHAR(10), Crc CHAR(10), String CHAR(1000), Se7en INT PRIMARY KEY)''')
+        #curs.execute('''CREATE TABLE IF NOT EXISTS danmakulist 
+        #    (Aid INT, Cid INT, DDate CHAR(20), DTime FLOAT, Type INT, Font INT, Color CHAR(10), Crc CHAR(10), String CHAR(1000), Se7en INT PRIMARY KEY)''')
         ins = 'INSERT OR REPLACE INTO danmakulist VALUES({aid}, {cid}, ?, ?, ?, ?, ?, ?, ?, ?)'.format(aid=aid, cid=cid)
         curs.execute(ins, data)
         database.commit()
@@ -80,15 +80,15 @@ if __name__ == "__main__":
     try:
         database = sqlite3.connect('danmaku.db')
         curs = database.cursor()
-        curs.execute('''CREATE TABLE IF NOT EXISTS avlist 
-            (Avid INT PRIMARY KEY, Title CHAR(100), Mid INT, Nick CHAR(20), 
-            Uptime CHAR(20), Region CHAR(20), Cover CHAR(200), Status INT)''')
-        curs.execute('''SELECT MAX(avid) FROM avlist''')
+        curs.execute('''CREATE TABLE IF NOT EXISTS danmakulist 
+            (Aid INT, Cid INT, DDate CHAR(20), DTime FLOAT, Type INT, Font INT, Color CHAR(10), Crc CHAR(10), String CHAR(1000), Se7en INT PRIMARY KEY)''')
+        curs.execute('''SELECT MAX(Aid) FROM danmakulist''')
         rows = curs.fetchall()
         minid, = rows[0] if rows[0] != (None,) else (1,)
     except:
         minid = 1
     maxid = GetMaxID();
     for avid in range(minid - 1, GetMaxID()):
+        print(avid)
         GetDanmaku(avid)
     #GetDanmaku(3110165)
