@@ -42,7 +42,7 @@ def GetDanmaku(aid=None, page=None):
         plist = json.loads(response.text)
         for i in range(len(plist)):
             cid = plist[i]['cid']
-            print(cid)
+            # print(cid)
             url_danmu = 'http://comment.bilibili.com/{cid}.xml'.format(cid=cid)
             danmu_xml = requests.get(url=url_danmu, timeout=300)
             content = BeautifulSoup(danmu_xml.text, "xml")
@@ -62,7 +62,7 @@ def GetDanmaku(aid=None, page=None):
             for danmaku in danmaku_data:
                 try:
                     WriteData(aid, cid, danmaku)
-                    print(danmaku)
+                    # print(danmaku)
                 except UnicodeEncodeError:
                     pass
     except:
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     except:
         minid = 1
     maxid = GetMaxID();
-    for avid in range(minid - 1, GetMaxID()):
+    for avid in range(minid - 1, maxid):
         print(avid)
         GetDanmaku(avid)
     #GetDanmaku(3110165)
