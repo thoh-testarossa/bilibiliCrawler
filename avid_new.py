@@ -145,7 +145,7 @@ if __name__ == "__main__":
     avid_Q = minid
     maxID = GetMaxID();
 
-    for avid in range(minid - 1, GetMaxID()):
+    for avid in range(minid - 1, maxID):
     #for avid in range(, maxID):
         '''curs.execute(''SELECT avid FROM avlist where avid = {avid}''.format(avid=avid))
         rows = curs.fetchall()
