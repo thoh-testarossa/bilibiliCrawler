@@ -89,6 +89,9 @@ if __name__ == "__main__":
         minid = 1
     maxid = GetMaxID();
     for avid in range(minid - 1, maxid):
-        print(avid)
-        GetDanmaku(avid)
+        try:
+            print(avid)
+            GetDanmaku(avid) 
+        except:
+            pass
     #GetDanmaku(3110165)
